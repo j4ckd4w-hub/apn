@@ -1,5 +1,20 @@
-<p>list works! </p>
-<pre>{{isLoading$ | async | json}}</pre>
+<form [formGroup]="form">
+  <pre>{{form.value | json}}</pre>
+  <div>
+    <select [formControlName]="exchangeFormBuilder.keys.currencyFrom">
+      <option [value]="defaultCurrencyCode">{{defaultCurrencyCode}}</option>
+      <option *ngFor="let currency of currencyList$ | async" [value]="currency.code">{{currency.code}}</option>
+    </select>
+    <input [formControlName]="exchangeFormBuilder.keys.currencyFromValue">
+  </div>
+  <select [formControlName]="exchangeFormBuilder.keys.currencyTo">
+    <option [value]="defaultCurrencyCode">{{defaultCurrencyCode}}</option>
+    <option *ngFor="let currency of currencyList$ | async" [value]="currency.code">{{currency.code}}</option>
+  </select>
+  <input [formControlName]="exchangeFormBuilder.keys.currencyToValue">
+</form>
+
 <input type="date" [formControl]="selectedDateControl">
+<div *ngIf="isLoading$ | async">loading...</div>
 <pre>{{tableData$ | async | json}}</pre>
 

@@ -5,12 +5,13 @@ import { CurrencyRoutingModule } from './currency-routing.module';
 import { CurrencyListComponent } from './list/list.component';
 import { CurrencyStoreModule } from './shared/store/store.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ExchangeFormBuilder } from './shared/form-builders/exchange-form-builder';
 
 @NgModule({
   declarations: [CurrencyComponent, CurrencyListComponent],
   imports: [CommonModule, CurrencyRoutingModule, CurrencyStoreModule, ReactiveFormsModule],
   exports: [],
-  providers: []
+  providers: [ExchangeFormBuilder]
 })
 export class CurrencyModule {
 }
