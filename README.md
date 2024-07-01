@@ -2,26 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
 
-## Development server
+## Uruchamianie aplikacji:
+Uruchom polecenie `npm install`, aby zainstalować zależności.
+Uruchom polecenie `npm start`, aby uruchomić aplikację na porcie 7373.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Budowanie aplikacji za pomocą Dockera:
+Jeśli wystąpił problem ze zgodnością bibliotek aplikacji z zainstalowanymi na urządzeniu testującym, aplikację możemy uruchomić w kontenerze za pomocą Dockera:
 
-## Code scaffolding
+W terminalu przejdź do katalogu głównego aplikacji, a następnie uruchom polecenie: `docker-compose up --build`
+Po utworzeniu obrazu oraz zainstalowaniu zależności aplikacja będzie dostępna pod urlem: `http://localhost`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Opis aplikacji:
+Aplikacja zawiera takie funkcjonalności jak:
+1. Tabela z kursami walut:
+	- Dane zaciągane z https://api.nbp.pl/api/exchangerates/tables/C?format=json
+	- Możliwość wyświetlenia historycznych kursów po wyborze daty w inpucie znajdującym się nad tabelą
+	- Jeśli dane w wybranej dacie nie istnieją zostanie wyświetlony błąd
+2. Kalkulator z możliwością wyboru dwóch walut oraz funkcją zamiany walut miejscami.
 
-## Build
+Użyte biblioteki:
+1. Tailwind - stylowanie
+2. Ngrx - zarządzanie stanem aplikacji
+3. Lodash - util
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
