@@ -7,14 +7,31 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
+          "skipTests": true,
+          "changeDetection": "OnPush",
           "style": "scss",
           "standalone": false
         },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
         "@schematics/angular:directive": {
-          "standalone": false
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
         },
         "@schematics/angular:pipe": {
-          "standalone": false
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "root": "",
@@ -104,5 +121,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
