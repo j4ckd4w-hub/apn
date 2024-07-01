@@ -1,0 +1,36 @@
+.snackbar-content {
+  opacity: 0;
+  right: 0;
+  animation-name: fadeInAnimationFrames;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  transition-duration: 0.25s;
+}
+
+.snackbar-destroy-effect {
+  animation-name: fadeOutAnimationFrames;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimationFrames {
+  from {
+    opacity: 0;
+    right: 0;
+  }
+  to {
+    opacity: 1;
+    right: 20px;
+  }
+}
+
+@keyframes fadeOutAnimationFrames {
+  from {
+    opacity: 1;
+    right: 20px;
+  }
+  to {
+    opacity: 0;
+    right: 0;
+  }
+}

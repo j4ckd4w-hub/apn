@@ -1,0 +1,41 @@
+<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-3">
+  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+  <tr>
+    <th scope="col" class="px-6 py-3">
+      Nazwa waluty
+    </th>
+    <th scope="col" class="px-6 py-3">
+      <div class="flex items-center">
+        Kod waluty
+      </div>
+    </th>
+    <th scope="col" class="px-6 py-3">
+      <div class="flex items-center">
+        Kurs kupna
+      </div>
+    </th>
+    <th scope="col" class="px-6 py-3">
+      <div class="flex items-center">
+        Kurs sprzedaży
+      </div>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let currencyRate of currencyList"
+      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+      {{currencyRate.currency}}
+    </th>
+    <td class="px-6 py-4">
+      {{currencyRate.code}}
+    </td>
+    <td class="px-6 py-4">
+      {{currencyRate.bid}}
+    </td>
+    <td class="px-6 py-4">
+      {{currencyRate.ask}}
+    </td>
+  </tr>
+  </tbody>
+</table>

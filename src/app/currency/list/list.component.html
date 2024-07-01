@@ -1,20 +1,29 @@
-<form [formGroup]="form">
-  <pre>{{form.value | json}}</pre>
-  <div>
-    <select [formControlName]="exchangeFormBuilder.keys.currencyFrom">
-      <option [value]="defaultCurrencyCode">{{defaultCurrencyCode}}</option>
-      <option *ngFor="let currency of currencyList$ | async" [value]="currency.code">{{currency.code}}</option>
-    </select>
-    <input [formControlName]="exchangeFormBuilder.keys.currencyFromValue">
+<div class="p-5">
+  <h1 class="text-2xl font-bold my-2">Kalkulator walutowy</h1>
+  <app-currency-exchange [currencyList]="currencyList$ | async"></app-currency-exchange>
+  <div class="mt-10">
+    <h1 class="text-2xl font-bold my-2">Kursy kupna i sprzedaży walut obcych – tabela C</h1>
+    <div class="relative overflow-x-auto sm:rounded-lg">
+      <div class="flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-end gap-2">
+        <h2 class="text-sm">Tabela nr <b>{{(tableData$ | async)?.no}}</b> z dnia
+          <b>{{(tableData$ | async)?.tradingDate}}</b> obowiązująca od dnia
+          <b>{{(tableData$ | async)?.effectiveDate}}</b>.</h2>
+        <input (click)="datepicker.showPicker()" #datepicker id="datepicker" name="end" type="date"
+               [formControl]="selectedDateControl"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Select date end">
+      </div>
+      <div *ngIf="!(isLoading$ | async) else loading">
+        <app-currency-table [currencyList]="currencyList$ | async"></app-currency-table>
+      </div>
+    </div>
   </div>
-  <select [formControlName]="exchangeFormBuilder.keys.currencyTo">
-    <option [value]="defaultCurrencyCode">{{defaultCurrencyCode}}</option>
-    <option *ngFor="let currency of currencyList$ | async" [value]="currency.code">{{currency.code}}</option>
-  </select>
-  <input [formControlName]="exchangeFormBuilder.keys.currencyToValue">
-</form>
+</div>
 
-<input type="date" [formControl]="selectedDateControl">
-<div *ngIf="isLoading$ | async">loading...</div>
-<pre>{{tableData$ | async | json}}</pre>
+<ng-template #loading>
+  <div class="w-full mt-5">
+    <app-skeleton></app-skeleton>
+  </div>
+</ng-template>
+
 

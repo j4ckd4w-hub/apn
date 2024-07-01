@@ -1,12 +1,15 @@
 import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
 import * as CurrencyListActions from './actions';
 import { CurrencyTableData } from '../models/currency-table';
+import { HttpErrorResponse } from '@angular/common/http';
+
+export const reducerKey = 'currency';
 
 export interface CurrencyState {
   list: CurrencyTableData[];
   singleTableData: CurrencyTableData;
   loading: boolean;
-  error: any;
+  error: HttpErrorResponse;
 }
 
 export const initialState: CurrencyState = {
@@ -36,7 +39,7 @@ export const currencyReducer = createReducer(
   }))
 );
 
-export const selectCurrencyState = createFeatureSelector<CurrencyState>('currency');
+export const selectCurrencyState = createFeatureSelector<CurrencyState>(reducerKey);
 export const selectCurrencyList = createSelector(selectCurrencyState, (state: CurrencyState) => state.list);
 export const selectCurrencySingleTableData = createSelector(selectCurrencyState, (state: CurrencyState) => state?.singleTableData);
 export const selectCurrencyLoading = createSelector(selectCurrencyState, (state: CurrencyState) => state.loading);

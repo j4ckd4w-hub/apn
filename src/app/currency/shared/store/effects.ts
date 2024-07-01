@@ -1,11 +1,14 @@
 import { CurrencyService } from './service';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as CurrencyListActions from './actions';
 import { catchError, map, mergeMap, of } from 'rxjs';
 
 @Injectable()
 export class CurrencyEffects {
+  private actions$ = inject(Actions);
+  private currencyService = inject(CurrencyService);
+
   loadList$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CurrencyListActions.loadList),
@@ -18,7 +21,4 @@ export class CurrencyEffects {
       )
     )
   );
-
-  constructor(private actions$: Actions, private currencyService: CurrencyService) {
-  }
 }

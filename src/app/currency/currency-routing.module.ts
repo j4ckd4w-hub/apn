@@ -10,7 +10,6 @@ export const routes: Routes = [
       { path: 'list', component: CurrencyListComponent }
     ]
   }
-
 ]
 
 @NgModule({

@@ -5,7 +5,7 @@ import { inject, Injectable } from '@angular/core';
 export class ExchangeFormBuilder {
   formBuilder: FormBuilder = inject(FormBuilder);
 
-  keys = {
+  readonly keys = {
     currencyFrom: 'currencyFrom',
     currencyFromValue: 'currencyFromValue',
     currencyTo: 'currencyTo',
