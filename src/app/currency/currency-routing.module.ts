@@ -1,12 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
 import { CurrencyComponent } from './currency.component';
 import { NgModule } from '@angular/core';
+import { CurrencyListComponent } from './list/list.component';
 
 export const routes: Routes = [
   {
     path: '', component: CurrencyComponent, children: [
-      // { path: '', pathMatch: 'full', redirectTo: 'list' },
-      // { path: 'list', component }
+      { path: '', pathMatch: 'full', redirectTo: 'list' },
+      { path: 'list', component: CurrencyListComponent }
     ]
   }
 
